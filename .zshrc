@@ -13,9 +13,6 @@ export EDITOR=/usr/bin/vim
 #export PAGER=/usr/local/bin/vimpager
 #export MANPAGER=/usr/local/bin/vimpager
 
-alias be='bundle exec'
-
-
 # -------------------------------------
 # zshのオプション
 # -------------------------------------
@@ -89,16 +86,13 @@ function vcs_prompt_info() {
 }
 
 # end VCS
-OK="%? "
-NG="%? "
 
+# プロンプト
 PROMPT=""
-PROMPT+="%(?.%F{green}$OK%f.%F{red}$NG%f) "
-PROMPT+="%F{blue}%~%f"
-PROMPT+="\$(vcs_prompt_info)"
-PROMPT+="%F{blue}$ %f"
-
-RPROMPT="[%*]"
+PROMPT+="%(?.%F{green}%?%f.%F{red}%?%f) " # 直前のコマンドのリターンコードを色付きで表示
+PROMPT+="%F{blue}%.%f" # カレントディレクトリ表示
+PROMPT+="\$(vcs_prompt_info)" # git表示
+PROMPT+="%F{blue} $ %f"
 
 # -------------------------------------
 # エイリアス
@@ -113,6 +107,8 @@ alias l1="ls -1"
 # tree
 alias tree="tree -NC" # N: 文字化け対策, C:色をつける
 
+# bundle exec
+alias be='bundle exec'
 
 # -------------------------------------
 # キーバインド
@@ -138,4 +134,3 @@ bindkey "^R" history-incremental-search-backward
 function title {
     echo -ne "\033]0;"$*"\007"
 }
-
