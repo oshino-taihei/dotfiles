@@ -3,12 +3,9 @@ defutf8 on
 defencoding utf8
 encoding utf-8 utf-8
 
-# escape key: Ctrl + z
-escape ^z^z
+# escape key: Ctrl + t
+escape ^t^t
 # reset s key
 bind s
 # screen status
 hardstatus alwayslastline "[%m/%d %03c:%s] %`%-w%{=b bw}%n %t%{-}%+w"
-# change window by Ctrl + (-> || <-)
-bindkey "^[OD" prev
-bindkey "^[OC" next
